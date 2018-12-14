@@ -1,26 +1,25 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Caliburn.Micro;
+using Newtonsoft.Json.Linq;
+using RelativityDesktop.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RelativityDesktop
 {
     class GetWorkspaces
     {
 
-        public List<Workspace> Workspaces { get; private set; }
+        public BindableCollection<WorkspaceModel> Workspaces { get; private set; }
 
         public GetWorkspaces()
         {
-            Workspaces = new List<Workspace>();
+            Workspaces = new BindableCollection<WorkspaceModel>();
         }
 
-        public List<Workspace> GetWorkspacesList(HttpClient client)
+        public BindableCollection<WorkspaceModel> GetWorkspacesList(HttpClient client)
         {
-            Workspaces = new List<Workspace>();
+            Workspaces = new BindableCollection<WorkspaceModel>();
             HttpResponseMessage response = client.GetAsync("Relativity.REST/Relativity/Workspace").Result;
             string jsonString;
 
@@ -42,7 +41,7 @@ namespace RelativityDesktop
                     throw new Exception("Unable to cast workspace ArtifactID to Int32");
                 }
 
-                Workspace workspace = new Workspace
+                WorkspaceModel workspace = new WorkspaceModel
                 {
                     Name = result["Relativity Text Identifier"].ToString(),
                     ArtifactId = artifactId,

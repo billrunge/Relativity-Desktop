@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="RelativityDesktop.Views.WorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RelativityDesktop.Views"
+             mc:Ignorable="d"  Background="white"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        
+        
+        <!-- Row 1-->
+        <!--<ComboBox x:Name="Workspaces" 
+                  Grid.Row="1" 
+                  Grid.Column="1" 
+                  Width="200" 
+                  SelectedItem="{Binding Path=SelectedWorkspace, Mode=OneWayToSource}" 
+                  DisplayMemberPath="Name"/>
+        <Button 
+            Grid.Row="1" 
+            Grid.Column="2" 
+            Width="150">
+            Push Me
+        </Button>-->
+        
+        <!-- Row 1 -->
+        <DataGrid 
+            ScrollViewer.CanContentScroll="True" 
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            AutoGenerateColumns="False" 
+            IsReadOnly="True" 
+            CanUserAddRows="False"
+            Grid.Row="1"
+            Grid.Column="1"
+            Name="Workspaces" 
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"  />
+                <DataGridTextColumn Header="Artifact ID" Binding="{Binding Path=ArtifactId}"  />
+                <DataGridTextColumn Header="Guid" Binding="{Binding Path=WorkspaceGuid}"  />
+                <DataGridTextColumn Header="Keywords" Binding="{Binding Path=Keywords}"  />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </Grid>
+
+
+
+</UserControl>

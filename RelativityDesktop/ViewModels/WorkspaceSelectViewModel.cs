@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RelativityDesktop.Models
+namespace RelativityDesktop.ViewModels
 {
-    class SampleModel
+    class WorkspaceSelectViewModel
     {
     }
 }

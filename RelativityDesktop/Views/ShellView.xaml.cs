@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace RelativityDesktop.Views
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class About : Window
+    public partial class ShellView : Window
     {
-        public About()
+        public ShellView()
         {
             InitializeComponent();
         }
