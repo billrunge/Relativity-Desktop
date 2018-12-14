@@ -39,7 +39,6 @@ namespace RelativityDesktop.ViewModels
             }
         }
 
-
         public WorkspaceViewModel()
         {
             GetRestClient getRestClient = new GetRestClient();
@@ -49,5 +48,12 @@ namespace RelativityDesktop.ViewModels
 
             Workspaces = getWorkspaces.GetWorkspacesList(client);
         }
+
+        private void Workspace_Click()
+        {
+
+        }
+
+
     }
 }

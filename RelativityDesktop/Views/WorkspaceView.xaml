@@ -48,14 +48,20 @@
             HorizontalAlignment="Stretch"
             >
             <DataGrid.Columns >
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"  />
+                <DataGridTemplateColumn Header="Name">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Path=Name}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Artifact ID" Binding="{Binding Path=ArtifactId}"  />
                 <DataGridTextColumn Header="Guid" Binding="{Binding Path=WorkspaceGuid}"  />
                 <DataGridTextColumn Header="Keywords" Binding="{Binding Path=Keywords}"  />
             </DataGrid.Columns>
         </DataGrid>
 
-
+        
 
     </Grid>
 
