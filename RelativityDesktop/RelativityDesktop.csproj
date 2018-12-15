@@ -95,17 +95,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Boostrapper.cs" />
-    <Compile Include="GetWorkspaces.cs" />
-    <Compile Include="Models\WorkspaceModel.cs" />
+    <Compile Include="EddsHelper.cs" />
+    <Compile Include="Models\WorkspaceListModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\WorkspaceListViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WorkspaceView.xaml.cs">
-      <DependentUpon>WorkspaceView.xaml</DependentUpon>
+    <Compile Include="Views\WorkspaceListView.xaml.cs">
+      <DependentUpon>WorkspaceListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Workspace.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,6 +113,9 @@
     <Compile Include="AuthHelper.cs" />
     <Compile Include="GetRestClient.cs" />
     <Compile Include="OAuthToken.cs" />
+    <Compile Include="Views\WorkspaceView.xaml.cs">
+      <DependentUpon>WorkspaceView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -126,6 +129,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkspaceListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

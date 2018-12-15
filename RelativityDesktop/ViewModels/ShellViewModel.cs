@@ -22,7 +22,7 @@ namespace RelativityDesktop.ViewModels
         {
             if (IsAuthenticated)
             {
-                ActivateItem(new WorkspaceViewModel());
+                ActivateItem(new WorkspaceListViewModel());
             }
         }
 
