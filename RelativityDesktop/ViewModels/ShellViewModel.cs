@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using RelativityDesktop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +14,41 @@ namespace RelativityDesktop.ViewModels
 
         public ShellViewModel()
         {
-            IsAuthenticated = true;
-            StartUp();
+            //IsAuthenticated = true;
+            //StartUp();
+            ActivateWindow.Parent = this;
+            ActivateWindow.OpenItem(new WorkspaceListViewModel());
         }
 
 
-        private void StartUp()
+        //private void StartUp()
+        //{
+        //    if (IsAuthenticated)
+        //    {
+        //        ActivateItem(new WorkspaceListViewModel());
+        //    }
+        //}
+
+        public static class ActivateWindow
         {
-            if (IsAuthenticated)
+            public static ShellViewModel Parent;
+
+            public static void OpenItem(IScreen t)
             {
-                ActivateItem(new WorkspaceListViewModel());
+                Parent.ActivateItem(t);
             }
         }
 
-      
+
+
+        //public void ChangeView()
+        //{
+
+        //    //ActivateItem(new WorkspaceViewModel(12345));
+        //}
+
+
+
 
     }
 }

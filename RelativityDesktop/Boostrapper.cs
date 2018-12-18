@@ -11,6 +11,8 @@ namespace RelativityDesktop
 {
     public class Boostrapper : BootstrapperBase
     {
+        private readonly SimpleContainer _container = new SimpleContainer();
+
         public Boostrapper()
         {
             Initialize();
@@ -22,6 +24,11 @@ namespace RelativityDesktop
 
             DisplayRootViewFor<ShellViewModel>();
 
+        }
+
+        protected override void Configure()
+        {
+            _container.Singleton<IEventAggregator, EventAggregator>();
         }
 
 

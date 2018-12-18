@@ -7,11 +7,13 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static RelativityDesktop.ViewModels.ShellViewModel;
 
 namespace RelativityDesktop.ViewModels
 {
-    class WorkspaceListViewModel : Conductor<Object>
+    class WorkspaceListViewModel : Screen
     {
+      
         private BindableCollection<WorkspaceListModel> _workspaces = new BindableCollection<WorkspaceListModel>();
         private WorkspaceListModel _selectedWorkspace;
 
@@ -45,21 +47,14 @@ namespace RelativityDesktop.ViewModels
             GetRestClient getRestClient = new GetRestClient();
             EddsHelper eddsHelper = new EddsHelper();
 
-
-            HttpClient client = getRestClient.GenerateRestClient();        
+            HttpClient client = getRestClient.GenerateRestClient();
             Workspaces = eddsHelper.GetWorkspacesList(client);
         }
 
-        public void Workspace_Click()
+        public void ChangeView()
         {
-            ChangeActiveItem(new WorkspaceViewModel(), true);
-
-            MessageBoxResult result = MessageBox.Show($"You clicked workspace {SelectedWorkspace.ArtifactId}");
-
-
-
+            ActivateWindow.OpenItem(new WorkspaceViewModel(SelectedWorkspace.ArtifactId));
         }
-
 
     }
 }

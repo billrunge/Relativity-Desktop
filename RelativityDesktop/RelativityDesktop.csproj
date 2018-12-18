@@ -97,6 +97,7 @@
     <Compile Include="Boostrapper.cs" />
     <Compile Include="EddsHelper.cs" />
     <Compile Include="Models\WorkspaceListModel.cs" />
+    <Compile Include="Models\WorkspaceModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceListViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Views\WorkspaceView.xaml.cs">
       <DependentUpon>WorkspaceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WorkspaceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
