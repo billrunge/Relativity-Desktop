@@ -96,13 +96,22 @@
     </ApplicationDefinition>
     <Compile Include="Boostrapper.cs" />
     <Compile Include="EddsHelper.cs" />
+    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\WorkspaceListModel.cs" />
     <Compile Include="Models\WorkspaceModel.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\UserListViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceListViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
+    <Compile Include="Views\AdminView.xaml.cs">
+      <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserListView.xaml.cs">
+      <DependentUpon>UserListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkspaceListView.xaml.cs">
       <DependentUpon>WorkspaceListView.xaml</DependentUpon>
@@ -130,7 +139,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Views\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

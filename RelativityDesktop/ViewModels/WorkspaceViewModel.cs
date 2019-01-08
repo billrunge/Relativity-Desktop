@@ -1,26 +1,16 @@
 ﻿using Caliburn.Micro;
-using RelativityDesktop.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace RelativityDesktop.ViewModels
 {
-    class WorkspaceViewModel : Screen
+    internal class WorkspaceViewModel : Screen
     {
         private DataTable _documentTable = new DataTable();
 
 
         public DataTable DocumentTable
         {
-            get
-            {
-                return _documentTable;
-            }
+            get => _documentTable;
             set
             {
                 _documentTable = value;
@@ -36,7 +26,10 @@ namespace RelativityDesktop.ViewModels
             WorkspaceHelper workspaceHelper = new WorkspaceHelper();
             GetRestClient getRestClient = new GetRestClient();
 
-            DocumentTable = workspaceHelper.GetDocumentList(getRestClient.GenerateRestClient(), workspaceArtifactId);
+            DataTable documents = workspaceHelper.GetDocumentList(getRestClient.GenerateRestClient(), workspaceArtifactId);
+
+                DocumentTable = documents;
+
 
         }
 

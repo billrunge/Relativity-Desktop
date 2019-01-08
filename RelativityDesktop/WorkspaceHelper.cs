@@ -110,23 +110,32 @@ namespace RelativityDesktop
 
             List<string> columnNames = new List<string>();
 
-            foreach (var field in jsonObject["Results"][0]["__Fields"])
+            if (!int.TryParse(jsonObject["ResultCount"].ToString(), out int resultCount))
             {
-                string columnName = field["Name"].ToString();
-                documents.Columns.Add(columnName);
-                columnNames.Add(columnName);
+                throw new Exception("Unable to cast result count to int");
             }
-           
-            foreach(var result in jsonObject["Results"])
-            { 
-                DataRow newDocument = documents.NewRow();
-                foreach(var column in columnNames)
+
+            if (resultCount > 0)
+            {
+
+                foreach (var field in jsonObject["Results"][0]["__Fields"])
                 {
-                    newDocument[column] = result[column];
+                    string columnName = field["Name"].ToString();
+                    documents.Columns.Add(columnName);
+                    columnNames.Add(columnName);
                 }
 
-                documents.Rows.Add(newDocument);
+                foreach (var result in jsonObject["Results"])
+                {
+                    DataRow newDocument = documents.NewRow();
+                    foreach (var column in columnNames)
+                    {
+                        newDocument[column] = result[column];
+                    }
 
+                    documents.Rows.Add(newDocument);
+
+                }
             }
 
             return documents;

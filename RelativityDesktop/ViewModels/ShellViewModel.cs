@@ -17,7 +17,7 @@ namespace RelativityDesktop.ViewModels
             //IsAuthenticated = true;
             //StartUp();
             ActivateWindow.Parent = this;
-            ActivateWindow.OpenItem(new WorkspaceListViewModel());
+            ActivateWindow.OpenItem(new AdminViewModel());
         }
 
 

@@ -10,9 +10,9 @@ namespace RelativityDesktop
 {
     class GetRestClient
     {
-        public string BaseAddress { get; set; } = "https://h-0f8a1f0eaf7f49c5bdf82fef66270255.hopper.relativity.com/";
-        public string ClientId { get; set; } = "a75b04197f6744bedb6520a42f";
-        public string ClientSecret { get; set; } = "8db9fa50c2f602321836f59566e84b96283fa0db";
+        public string BaseAddress { get; set; } = "https://h-8a3ba60b7c394158903b6bdc6ae2db6f.hopper.relativity.com/";
+        public string ClientId { get; set; } = "592ba3d029667c0a890c3ee3cc";
+        public string ClientSecret { get; set; } = "7c10c6c4a68340a2607594d4bb88429b2d6cc0a1";
         public HttpClient RestClient { get; private set; }
 
 
