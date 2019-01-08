@@ -45,7 +45,7 @@ namespace RelativityDesktop.ViewModels
         public WorkspaceListViewModel()
         {
             GetRestClient getRestClient = new GetRestClient();
-            EddsHelper eddsHelper = new EddsHelper();
+            AdminHelper eddsHelper = new AdminHelper();
 
             HttpClient client = getRestClient.GenerateRestClient();
             Workspaces = eddsHelper.GetWorkspacesList(client);

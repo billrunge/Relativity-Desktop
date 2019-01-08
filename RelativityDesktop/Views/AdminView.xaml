@@ -12,6 +12,7 @@
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,10 +24,11 @@
 
         <Button Name="WorkspaceButton" Grid.Row="0" Grid.Column="1">Workspace</Button>
         <Button Name="UserButton" Grid.Row="0" Grid.Column="2">Users</Button>
+        <Button Name="GroupButton" Grid.Row="0" Grid.Column="3">Groups</Button>
         
         <!-- Row 1 (Content) -->
 
-        <ContentControl x:Name="ActiveItem"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <ContentControl x:Name="ActiveItem"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
 
 
 

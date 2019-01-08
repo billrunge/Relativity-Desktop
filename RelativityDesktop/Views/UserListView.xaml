@@ -35,10 +35,10 @@
             HorizontalAlignment="Stretch"
             >
             <DataGrid.Columns >
-                <DataGridTextColumn Header="Artifact ID"   />         
-                <DataGridTextColumn Header="Email Address"   />
-                <DataGridTextColumn Header="First Name"   />
-                <DataGridTextColumn Header="Last Name"   />
+                <DataGridTextColumn Header="Artifact ID" Binding="{Binding Path=ArtifactId}"  />         
+                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}"  />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}"   />
+                <DataGridTextColumn Header="Relativity Access" Binding="{Binding Path=RelAccess}"  />
             </DataGrid.Columns>
         </DataGrid>
 

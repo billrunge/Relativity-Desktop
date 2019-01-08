@@ -9,34 +9,33 @@ using System.Threading.Tasks;
 
 namespace RelativityDesktop.ViewModels
 {
-    class UserListViewModel : Screen
+    class GroupListViewModel : Screen
     {
 
-        private BindableCollection<UserListModel> _users;
-        public BindableCollection<UserListModel> Users
+        private BindableCollection<GroupListModel> _groups;
+
+        public BindableCollection<GroupListModel> Groups
         {
             get
             {
-                return _users;
+                return _groups;
             }
             set
             {
-                _users = value;
+                _groups = value;
             }
         }
 
-        public UserListViewModel()
+        public GroupListViewModel()
         {
             GetRestClient getRestClient = new GetRestClient();
             AdminHelper adminHelper = new AdminHelper();
 
             HttpClient client = getRestClient.GenerateRestClient();
-            Users = adminHelper.GetUserList(client);
+            Groups = adminHelper.GetGroupList(client);
 
         }
 
 
-
     }
 }
-

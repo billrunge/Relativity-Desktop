@@ -26,6 +26,11 @@ namespace RelativityDesktop.ViewModels
             AdminActivateWindow.OpenItem(new UserListViewModel());
         }
 
+        public void GroupButton()
+        {
+            AdminActivateWindow.OpenItem(new GroupListViewModel());
+        }
+
 
 
 

@@ -4,14 +4,12 @@ using Newtonsoft.Json.Linq;
 using RelativityDesktop.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RelativityDesktop
 {
-    class EddsHelper
+    internal class AdminHelper
     {
 
         public string GetMatterName(HttpClient client, int artifactId)
@@ -78,11 +76,11 @@ namespace RelativityDesktop
 
         public BindableCollection<WorkspaceListModel> GetWorkspacesList(HttpClient client)
         {
-            BindableCollection<WorkspaceListModel>  workspaces = new BindableCollection<WorkspaceListModel>();
+            BindableCollection<WorkspaceListModel> workspaces = new BindableCollection<WorkspaceListModel>();
 
             WorkspaceSearchField searchField = new WorkspaceSearchField
             {
-                fields = new List<string> { "*" }                
+                fields = new List<string> { "*" }
             };
 
             string queryInputJSON = JsonConvert.SerializeObject(searchField);
@@ -105,7 +103,7 @@ namespace RelativityDesktop
             JObject jsonObject = JObject.Parse(jsonString);
 
 
-            foreach (var result in jsonObject["Results"])
+            foreach (JToken result in jsonObject["Results"])
             {
                 if (!int.TryParse(result["Artifact ID"].ToString(), out int artifactId))
                 {
@@ -139,23 +137,108 @@ namespace RelativityDesktop
             }
             return workspaces;
         }
+
+
+        public BindableCollection<UserListModel> GetUserList(HttpClient client)
+        {
+            BindableCollection<UserListModel> users = new BindableCollection<UserListModel>();
+
+            HttpResponseMessage response = client.GetAsync("Relativity.REST/Relativity/User").Result;
+            string jsonString;
+
+            if (response.IsSuccessStatusCode)
+            {
+                jsonString = response.Content.ReadAsStringAsync().Result;
+            }
+            else
+            {
+                throw new Exception("Failed to get users from Relativity");
+            }
+
+            JObject jsonObject = JObject.Parse(jsonString);
+
+
+            foreach (JToken result in jsonObject["Results"])
+            {
+                if (!int.TryParse(result["Artifact ID"].ToString(), out int artifactId))
+                {
+                    throw new Exception("Unable to cast user ArtifactID to Int32");
+                }
+
+                if (!bool.TryParse(result["Relativity Access"].ToString(), out bool relAccess))
+                {
+                    throw new Exception("Unable to cast user Relativity Access to bool");
+                }
+
+                UserListModel user = new UserListModel
+                {
+                    ArtifactId = artifactId,
+                    FirstName = result["First Name"].ToString(),
+                    LastName = result["Last Name"].ToString(),
+                    RelAccess = relAccess
+                };
+
+                users.Add(user);
+
+            }
+            return users;
+        }
+
+        public BindableCollection<GroupListModel> GetGroupList(HttpClient client)
+        {
+            BindableCollection<GroupListModel> groups = new BindableCollection<GroupListModel>();
+
+            HttpResponseMessage response = client.GetAsync("Relativity.REST/Relativity/Group").Result;
+            string jsonString;
+
+            if (response.IsSuccessStatusCode)
+            {
+                jsonString = response.Content.ReadAsStringAsync().Result;
+            }
+            else
+            {
+                throw new Exception("Failed to get groups from Relativity");
+            }
+
+            JObject jsonObject = JObject.Parse(jsonString);
+
+
+            foreach (JToken result in jsonObject["Results"])
+            {
+                if (!int.TryParse(result["Artifact ID"].ToString(), out int artifactId))
+                {
+                    throw new Exception("Unable to cast user ArtifactID to Int32");
+                }
+
+                GroupListModel group = new GroupListModel
+                {
+                    ArtifactId = artifactId,
+                    Name = result["Relativity Text Identifier"].ToString(),
+                };
+
+                groups.Add(group);
+
+            }
+            return groups;
+        }
     }
-
-    public class Matter
-    {
-        public int matterArtifactID { get; set; }
-    }
-
-    public class Client
-    {
-        public int clientArtifactID { get; set; }
-    }
-
-    public class WorkspaceSearchField
-    {
-        public List<string> fields { get; set; } = new List<string>();
-    }
-
-
-
 }
+
+public class Matter
+{
+    public int matterArtifactID { get; set; }
+}
+
+public class Client
+{
+    public int clientArtifactID { get; set; }
+}
+
+public class WorkspaceSearchField
+{
+    public List<string> fields { get; set; } = new List<string>();
+}
+
+
+
+
